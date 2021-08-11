@@ -6,7 +6,10 @@ const app = express();
 app.use(formidable());
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/marvel-app", {
+require("dotenv").config();
+
+// ATTETNION .env de l'API KEY
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -25,6 +28,6 @@ app.all("*", function (req, res) {
   res.json({ message: "Page not found" });
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server has started");
 });
