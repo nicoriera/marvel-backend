@@ -8,7 +8,7 @@ app.use(cors());
 
 require("dotenv").config();
 
-mongoose.connect("mongodb://localhost:27017/marvel-app", {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -34,3 +34,5 @@ app.use(function (err, req, res, next) {
 app.listen(process.env.PORT, () => {
   console.log("Server has started");
 });
+
+// "mongodb://localhost:27017/marvel-app"
