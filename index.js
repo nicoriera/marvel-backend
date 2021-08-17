@@ -20,6 +20,8 @@ db.once("open", function () {
   console.log("connecté à Mongoose");
 });
 
+const PORT = process.env.PORT || 5000;
+
 const userRoutes = require("./routes/user");
 app.use(userRoutes);
 
@@ -31,8 +33,6 @@ app.use(function (err, req, res, next) {
   res.json({ error: err.message });
 });
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log("Server has started");
+app.listen(PORT, () => {
+  console.log(`Our app is running on port ${PORT}`);
 });
-
-// "mongodb://localhost:27017/marvel-app"
