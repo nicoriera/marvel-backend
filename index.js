@@ -26,11 +26,12 @@ const userRoutes = require("./routes/user");
 app.use(userRoutes);
 
 app.get("/", (req, res) => {
-  res.json({ message: "Bienvenue sur l'API Marvel" });
+  res.json({ message: "Welcome to Marvel API" });
 });
 
-app.use(function (err, req, res, next) {
-  res.json({ error: err.message });
+app.all("*", (req, res) => {
+  console.log("route: /all routes");
+  res.status(404).json({ message: "Page not found" });
 });
 
 app.listen(PORT, () => {
