@@ -20,13 +20,15 @@ db.once("open", function () {
   console.log("connecté à Mongoose");
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 const userRoutes = require("./routes/user");
 app.use(userRoutes);
+const characterRoutes = require("./routes/character");
+app.use(characterRoutes);
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Marvel API" });
+  res.status(200).json({ message: "Welcome to Marvel API" });
 });
 
 app.all("*", (req, res) => {
