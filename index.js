@@ -24,12 +24,12 @@ db.once("open", function () {
 const PORT = process.env.PORT;
 
 const userRoutes = require("./routes/user");
-app.use(userRoutes);
 const characterRoutes = require("./routes/character");
-app.use(characterRoutes);
 const comicRoutes = require("./routes/comic");
-app.use(comicRoutes);
 const favoritesRoutes = require("./routes/favorites");
+app.use(userRoutes);
+app.use(characterRoutes);
+app.use(comicRoutes);
 app.use(favoritesRoutes);
 
 app.get("/", (req, res) => {
